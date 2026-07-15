@@ -1,0 +1,27 @@
+# Niobium crystal parameters
+cubic 3.30 Ang
+stiffness 1 1 246.5 GPa
+stiffness 1 2 134.8 GPa
+stiffness 4 4 28.7 GPa
+
+# Phonon parameters
+dyn -379.0 78.4 145.0 39.7 GPa
+scat 0.0e-42 s3
+decay 5.77e-54 s4
+decayTT 0.9
+LDOS 0.055
+STDOS 0.6204
+FTDOS 0.33
+Debye 15 THz
+vsound 4920 m/s
+vtrans 2100 m/s
+
+# Superconducting parameters
+sc_tau0_qp 0.149 ns
+sc_tau0_ph 0.00417 ns
+
+# Nb is used only for phonon and Bogoliubov-quasiparticle transport here.
+# Explicit nonzero placeholders keep G4CMP from trying to derive semiconductor
+# charge-carrier scattering lengths from properties that metals do not define.
+l0_e 1 nm
+l0_h 1 nm

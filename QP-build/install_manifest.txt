@@ -1,0 +1,2 @@
+/home/AnsleyRemote/g4cmp_v10_w_Geant4_v11/QP-example/QP-install/lib/libg4cmpQuasiparticle.so
+/home/AnsleyRemote/g4cmp_v10_w_Geant4_v11/QP-example/QP-install/bin/g4cmpQuasiparticle
