@@ -72,5 +72,5 @@
 /gps/ang/maxtheta 180 deg
 /gps/ene/type Mono
 /gps/energy 0.000382 eV
-/gps/number 500000
+/gps/number 31250
 /run/beamOn 1

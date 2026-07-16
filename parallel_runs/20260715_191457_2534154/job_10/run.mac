@@ -64,7 +64,7 @@
 #/gps/pos/centre 2.5 -1.5 5.00009 mm
 #/gps/pos/centre 2.5 -0.9746555 5.00009 
 
-/random/setSeeds 123456 567890
+/random/setSeeds 123466 568060
 
 # Launch 2*Delta_Al phonons into the silicon (-z hemisphere).
 /gps/ang/type iso
@@ -72,5 +72,5 @@
 /gps/ang/maxtheta 180 deg
 /gps/ene/type Mono
 /gps/energy 0.000382 eV
-/gps/number 500000
+/gps/number 31250
 /run/beamOn 1
