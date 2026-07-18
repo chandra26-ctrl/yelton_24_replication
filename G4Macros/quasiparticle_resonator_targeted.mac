@@ -40,7 +40,7 @@
 
 # Toggle phononBounces depending on whether
 # you want to see a full event or not.
-/g4cmp/phononBounces 1000000
+/g4cmp/phononBounces 5000 #500000 #1000000
 /g4cmp/qpBounces 5
 /g4cmp/minEPhonons 0.000382 eV
 
@@ -60,9 +60,9 @@
 /gps/number 1
 /gps/particle phononTF
 /gps/pos/type Point
-/gps/pos/centre 1.7463095 -0.9746555 5.00009 mm
+#/gps/pos/centre 1.7463095 -0.9746555 5.00009 mm
 #/gps/pos/centre 2.5 -1.5 5.00009 mm
-#/gps/pos/centre 2.5 -0.9746555 5.00009 
+/gps/pos/centre 2.5 -0.9746555 5.00009 mm
 
 /random/setSeeds 123456 567890
 
