@@ -71,6 +71,19 @@ constexpr double dp_scTauQPTrap_Nb = 1.0 * CLHEP::ms; // G4CMP validation defaul
   constexpr double dp_housingRadialCutoutDimZ = dp_siliconChipDimZ; //QUBIT IS FLUSH WITH TOP OF HOUSING
 
   //----------------------------------------------------------------
+  // The yelton 2024 paper uses an array of copper island on the back of chip
+  // to absorb phonons.
+  constexpr bool dp_usePaperCuIslands = true;
+  constexpr double dp_cuIslandDimX = 200.0 * CLHEP::um;
+  constexpr double dp_cuIslandDimY = 200.0 * CLHEP::um;
+  constexpr double dp_cuIslandDimZ = 10.0 * CLHEP::um;
+  constexpr double dp_cuIslandGap = 50.0 * CLHEP::um;
+  constexpr double dp_cuIslandPitch =
+      dp_cuIslandDimX + dp_cuIslandGap;
+  constexpr int dp_cuIslandCountX = 32;
+  constexpr int dp_cuIslandCountY = 32;
+
+  //----------------------------------------------------------------
   //Parameters of the niobium film ground plane
   constexpr double dp_useGroundPlane = true;
   constexpr double dp_groundPlaneDimX = dp_siliconChipDimX;

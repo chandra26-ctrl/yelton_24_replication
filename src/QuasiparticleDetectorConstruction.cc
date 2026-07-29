@@ -178,11 +178,11 @@ void QuasiparticleDetectorConstruction::SetupGeometry() {
     //For the the interface of the Si and the Cu
     fSiCuInterface = new G4CMPSurfaceProperty("SiCuSurf",
                                               0.0, 1.0, 0.0, 0.0,
-                                              0.0, 0.0, 0.0, 0.0,
+                                              0.736, 1.0, 0.0, 0.0,
                                               0.0, 1.0);
-    fSiCuInterface->AddScatteringProperties(anhCutoff, reflCutoff, anhCoeffs,
-                                            diffCoeffs, specCoeffs, GHz, GHz,
-                                            GHz);
+    // fSiCuInterface->AddScatteringProperties(anhCutoff, reflCutoff, anhCoeffs,
+    //                                         diffCoeffs, specCoeffs, GHz, GHz,
+    //                                         GHz);
     fBorderContainer.emplace("SiCu",fSiCuInterface);      
 
     //For the the interface of the Cu and the Vac
@@ -349,6 +349,72 @@ void QuasiparticleDetectorConstruction::SetupGeometry() {
                                 physPlusYWall, fSiWallInterface);
   new G4CMPLogicalBorderSurface("border_silicon_minusYWall", phys_siliconChip,
                                 physMinusYWall, fSiWallInterface);
+
+  // if desired, set up the backside copper island array (yelton 2024)
+  if (dp_usePaperCuIslands) {
+    auto* solidCuIsland = new G4Box("CuIsland_solid", 0.5 * dp_cuIslandDimX,
+                                      0.5 * dp_cuIslandDimY, 0.5 * dp_cuIslandDimZ);
+
+    auto* solidCuArray = new G4MultiUnion("CuIslandArray_solid");
+
+    for (G4int ix = 0; ix < dp_cuIslandCountX; ++ix) {
+      const G4double x =
+          (ix - 0.5 * (dp_cuIslandCountX - 1))
+          * dp_cuIslandPitch;
+
+      for (G4int iy = 0; iy < dp_cuIslandCountY; ++iy) {
+        const G4double y =
+            (iy - 0.5 * (dp_cuIslandCountY - 1))
+            * dp_cuIslandPitch;
+
+        solidCuArray->AddNode(
+            *solidCuIsland,
+            G4Transform3D(
+                G4RotationMatrix(),
+                G4ThreeVector(x, y, 0.0)));
+      }
+    }
+
+    solidCuArray->Voxelize();
+
+    auto* logCuArray = new G4LogicalVolume(
+        solidCuArray, fCopper, "CuIslandArray_log");
+
+
+    auto* cuVis = new G4VisAttributes(G4Colour(0.8, 0.5, 0.2));
+    cuVis->SetVisibility(true);
+    logCuArray->SetVisAttributes(cuVis);
+
+    // Lower surface of the silicon chip.
+    const G4double siliconBackZ =
+        siliconChipTranslate.z() - 0.5 * dp_siliconChipDimZ;
+
+    // Place the copper immediately below that surface.
+    const G4double cuArrayZ =
+        siliconBackZ - 0.5 * dp_cuIslandDimZ;
+
+    auto* physCuArray = new G4PVPlacement(
+        nullptr, G4ThreeVector(0., 0., cuArrayZ),
+        logCuArray, "CuIslandArray", worldLogical, false, 0, checkOverlaps);
+
+    // Register one lattice for the complete copper array.
+    auto* physCuLattice = new G4LatticePhysical(log_copperLattice);
+    physCuLattice->SetMillerOrientation(1, 0, 0);
+    LM->RegisterLattice(physCuArray, physCuLattice);
+
+    // G4CMP boundaries must be defined in both directions.
+    new G4CMPLogicalBorderSurface(
+        "border_silicon_cuArray",
+        phys_siliconChip,
+        physCuArray,
+        fSiCuInterface);
+
+    new G4CMPLogicalBorderSurface(
+        "border_cuArray_silicon",
+        physCuArray,
+        phys_siliconChip,
+        fSiCuInterface);
+  }
 
   //--------------------------------------------------------------------------
   //If desired, set up the copper qubit housing

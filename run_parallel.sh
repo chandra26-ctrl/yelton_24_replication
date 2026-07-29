@@ -3,14 +3,22 @@
 set -u
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EXE="$ROOT/QP-build/g4cmpQuasiparticle"
+BUILD_DIR="${QP_BUILD_DIR:-$ROOT/QP-build}"
+EXE="$BUILD_DIR/g4cmpQuasiparticle"
+CMAKE_CACHE="$BUILD_DIR/CMakeCache.txt"
 BASE_MACRO="$ROOT/G4Macros/quasiparticle_resonator_targeted.mac"
-CMAKE_CACHE="$ROOT/QP-build/CMakeCache.txt"
 
-# Usage: ./run_parallel.sh [number_of_jobs] [total_primaries] [max_retries]
+# Usage: ./run_parallel.sh [number_of_jobs] [total_primaries] [max_retries] [batch_size]
 NJOBS="${1:-16}"
 TOTAL_PRIMARIES="${2:-500000}"
 MAX_RETRIES="${3:-1}"
+BATCH_SIZE="${4:-1000}"
+
+if (( $# > 4 )); then
+  echo "Error: too many arguments." >&2
+  echo "Usage: ./run_parallel.sh [number_of_jobs] [total_primaries] [max_retries] [batch_size]" >&2
+  exit 2
+fi
 
 if [[ ! "$NJOBS" =~ ^[1-9][0-9]*$ ]]; then
   echo "Error: number_of_jobs must be a positive integer." >&2
@@ -24,6 +32,11 @@ fi
 
 if [[ ! "$MAX_RETRIES" =~ ^[0-9]+$ ]]; then
   echo "Error: max_retries must be a non-negative integer." >&2
+  exit 2
+fi
+
+if [[ ! "$BATCH_SIZE" =~ ^[1-9][0-9]*$ ]]; then
+  echo "Error: batch_size must be a positive integer." >&2
   exit 2
 fi
 
@@ -77,9 +90,54 @@ REMAINDER=$((TOTAL_PRIMARIES % NJOBS))
 PIDS=()
 
 echo "Starting $NJOBS jobs for $TOTAL_PRIMARIES total primaries"
+echo "Maximum primaries per event: $BATCH_SIZE"
 echo "Failed jobs will be retried up to $MAX_RETRIES time(s) with new seeds"
 echo "Results directory: $RUN_DIR"
 echo "Lattice data: $LATTICE_DATA"
+
+make_worker_macro() {
+  local output_file="$1"
+  local count="$2"
+  local seed1="$3"
+  local seed2="$4"
+  local full_events=$((count / BATCH_SIZE))
+  local tail_primaries=$((count % BATCH_SIZE))
+
+  awk \
+    -v seed1="$seed1" \
+    -v seed2="$seed2" \
+    -v batch_size="$BATCH_SIZE" \
+    -v full_events="$full_events" \
+    -v tail_primaries="$tail_primaries" '
+      { lines[NR] = $0 }
+      /^\/gps\/number[[:space:]]+[0-9]+([[:space:]]|$)/ {
+        final_number_line = NR
+      }
+      /^\/run\/beamOn[[:space:]]+[0-9]+([[:space:]]|$)/ {
+        final_beamon_line = NR
+      }
+      END {
+        if (!final_number_line || !final_beamon_line) exit 20
+
+        for (i = 1; i <= NR; ++i) {
+          if (lines[i] ~ /^\/random\/setSeeds[[:space:]]+/) {
+            print "/random/setSeeds " seed1 " " seed2
+          } else if (i == final_number_line) {
+            if (full_events > 0) {
+              print "/gps/number " batch_size
+              print "/run/beamOn " full_events
+            }
+            if (tail_primaries > 0) {
+              print "/gps/number " tail_primaries
+              print "/run/beamOn 1"
+            }
+          } else if (i != final_beamon_line) {
+            print lines[i]
+          }
+        }
+      }
+    ' "$BASE_MACRO" > "$output_file"
+}
 
 for ((i = 0; i < NJOBS; i++)); do
   JOB_DIR="$RUN_DIR/job_$i"
@@ -100,10 +158,11 @@ for ((i = 0; i < NJOBS; i++)); do
       SEED1=$((123456 + i + attempt * NJOBS))
       SEED2=$((567890 + 17 * i + 104729 * attempt))
 
-      sed \
-        -e "s|^/random/setSeeds .*|/random/setSeeds $SEED1 $SEED2|" \
-        -e "s|^/gps/number 500000$|/gps/number $COUNT|" \
-        "$BASE_MACRO" > "$ATTEMPT_DIR/run.mac"
+      if ! make_worker_macro "$ATTEMPT_DIR/run.mac" "$COUNT" \
+        "$SEED1" "$SEED2"; then
+        echo "Error: could not generate batched worker macro." >&2
+        exit 2
+      fi
 
       # Keep these convenient paths pointed at the latest attempt. Attempt
       # directories preserve earlier logs and any partial output for diagnosis.
@@ -137,7 +196,15 @@ for ((i = 0; i < NJOBS; i++)); do
     exit "$ATTEMPT_STATUS"
   ) &
   PIDS+=("$!")
-  echo "  job_$i: $COUNT primaries, PID ${PIDS[-1]}"
+  FULL_EVENTS=$((COUNT / BATCH_SIZE))
+  TAIL_PRIMARIES=$((COUNT % BATCH_SIZE))
+  if (( TAIL_PRIMARIES > 0 )); then
+    echo "  job_$i: $COUNT primaries in $FULL_EVENTS full event(s)" \
+         "plus a $TAIL_PRIMARIES-primary tail, PID ${PIDS[-1]}"
+  else
+    echo "  job_$i: $COUNT primaries in $FULL_EVENTS full event(s)," \
+         "PID ${PIDS[-1]}"
+  fi
 done
 
 FAILED=0
