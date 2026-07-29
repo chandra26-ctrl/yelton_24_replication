@@ -52,4 +52,9 @@ A major focus of the analysis is determining how many quasiparticles are produce
 | run_parallel_phonon_types.sh |	Runs separate simulations for selected phonon polarizations |
 | run_process_chunks.sh |	Divides large simulations into independent processes |
 
+# Running the Simulation
+
+Start the executable interactively, by going into the build release folder and executing:
+''' g4cmpQuasiparticle '''
+
 
