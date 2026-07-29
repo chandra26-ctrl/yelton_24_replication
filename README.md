@@ -69,4 +69,8 @@ At the G4CMP command prompt, execute:
 > ```
 > /control/execute G4Macros/quasiparticle_geometry_vis.mac
 > ```
-This macro can be used to inspect the substrate, superconducting structures, resonators, qubits, and particle trajectories. The following geometry was produced for the non-Cu and Cu case:
+This macro can be used to inspect the substrate, superconducting structures, resonators, qubits, and particle trajectories. The following geometries compare the cases with and without Cu islands:
+
+[insert figure]
+
+To switch between configurations, toggle the variable `dp_usePaperCuIslands` in the QuasiparticleDetectorParameters header file (line 76): set it to `true` to include Cu islands, or `false` to exclude them.
