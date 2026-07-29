@@ -71,6 +71,6 @@ At the G4CMP command prompt, execute:
 > ```
 This macro can be used to inspect the substrate, superconducting structures, resonators, qubits, and particle trajectories. The following geometries compare the cases with and without Cu islands:
 
-![Geometry comparison with and without Cu islands](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/non-Cu.png?raw=true)
+| ![Geometry without Cu islands](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/non-Cu.png?raw=true) | ![Geometry with Cu islands](https://github.com/user-attachments/assets/efaf1471-a05c-4d31-809c-81aa059d7ff1) |
 
 To switch between configurations, toggle the variable `dp_usePaperCuIslands` in the QuasiparticleDetectorParameters header file (line 76): set it to `true` to include Cu islands, or `false` to exclude them.
