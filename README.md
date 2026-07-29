@@ -73,8 +73,8 @@ This macro can be used to inspect the substrate, superconducting structures, res
 
 <table>
   <tr>
-    <td><img src="[https://example.com](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/non-Cu.png?raw=true)" width="400"></td>
-    <td><img src="[https://example.com](https://github.com/user-attachments/assets/efaf1471-a05c-4d31-809c-81aa059d7ff1)" width="400"></td>
+    <td><img src="https://example.com](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/non-Cu.png?raw=true" width="400"></td>
+    <td><img src="https://example.com](https://github.com/user-attachments/assets/efaf1471-a05c-4d31-809c-81aa059d7ff1" width="400"></td>
   </tr>
 </table>
 
