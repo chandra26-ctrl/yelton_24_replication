@@ -54,9 +54,19 @@ A major focus of the analysis is determining how many quasiparticles are produce
 
 # Running the Simulation
 
-Start the executable interactively, by going into the build release folder and executing:
+Start the executable interactively, by going into the build folder and executing:
 > ```
 > ./g4cmpQuasiparticle
 > ```
+There are two build folders, 'QP-build-release' and 'QP-build'. This repository uses two separate build directories for different purposes:
 
+- QP-build is configured with CMake’s RelWithDebInfo build type. It includes compiler optimizations while preserving debugging symbols, making it useful for testing, troubleshooting, and investigating simulation behavior with tools such as GDB.
+- QP-build-release is configured with CMake’s Release build type. It enables stronger compiler optimizations and omits most debugging information, making it better suited for large simulations involving millions of phonons.
 
+During development, the regular QP-build directory was used so that errors and unexpected simulation behavior could be debugged more easily. Once the simulation was stable, QP-build-release was used for large production runs to reduce execution time.
+
+At the G4CMP command prompt, execute:
+> ```
+> /control/execute G4Macros/quasiparticle_geometry_vis.mac
+> ```
+This macro can be used to inspect the substrate, superconducting structures, resonators, qubits, and particle trajectories. The following geometry was produced for the non-Cu and Cu case:
