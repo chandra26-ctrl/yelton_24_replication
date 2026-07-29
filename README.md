@@ -55,6 +55,6 @@ A major focus of the analysis is determining how many quasiparticles are produce
 # Running the Simulation
 
 Start the executable interactively, by going into the build release folder and executing:
-''' g4cmpQuasiparticle '''
+'''g4cmpQuasiparticle'''
 
 
