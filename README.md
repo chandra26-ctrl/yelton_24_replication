@@ -82,4 +82,22 @@ The geometry without Cu islands (left) clearly shows the aluminum patches as sma
 
 To switch between configurations, toggle the variable `dp_usePaperCuIslands` in the QuasiparticleDetectorParameters header file (line 76): set it to `true` to include Cu islands, or `false` to exclude them.
 
- 
+# Parallel Simulations
+
+Large Monte Carlo simulations can require millions of phonon events, making a single simulation prohibitively slow. To reduce execution time, this repository includes scripts that divide the total number of simulated phonons into multiple independent jobs that are executed simultaneously.
+
+Each job runs the same simulation with a unique random seed while processing only a fraction of the total events. Once all jobs have completed, their outputs are automatically merged into a single set of CSV files for analysis. Because each Monte Carlo event is independent, the combined results are statistically equivalent to those produced by a single long simulation while significantly reducing the overall wall-clock runtime.
+
+This parallelization strategy allows the simulation to efficiently utilize multiple CPU cores and makes it practical to generate the large event statistics required for reproducing the analyses presented in the Yelton paper.
+
+## General Parallel Run
+
+> ```
+> ./run_parallel.sh [number_of_jobs] [total_primaries] [max_retries] [batch_size]
+> ```
+
+Example:
+> ```
+> ./run_parallel.sh 16 500000 1 1000
+> ```
+
