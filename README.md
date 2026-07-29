@@ -52,7 +52,7 @@ A major focus of the analysis is determining how many quasiparticles are produce
 | run_parallel_phonon_types.sh |	Runs separate simulations for selected phonon polarizations |
 | run_process_chunks.sh |	Divides large simulations into independent processes |
 
-# Running the Simulation
+# Visualizing the geometry
 
 Start the executable interactively, by going into the build folder and executing:
 > ```
@@ -79,4 +79,7 @@ This macro can be used to inspect the substrate, superconducting structures, res
 </table>
 The geometry without Cu islands (left) clearly shows the aluminum patches as small red/blue features. With Cu islands present (right), these aluminum patches are largely obscured by the copper.
 
+
 To switch between configurations, toggle the variable `dp_usePaperCuIslands` in the QuasiparticleDetectorParameters header file (line 76): set it to `true` to include Cu islands, or `false` to exclude them.
+
+ 
