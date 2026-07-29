@@ -38,5 +38,18 @@ A major focus of the analysis is determining how many quasiparticles are produce
 |file|Purpose|
 | --- | --- |
 | G4Macros/quasiparticle_geometry_vis.mac | Visualizes the substrate, resonators, qubits, and particle trajectories |
+| G4Macros/quasiparticle_resonator_targeted.mac |	Runs the targeted phonon simulation |
+| QuasiparticleDetectorConstruction |	Constructs the substrate and superconducting device geometry |
+| QuasiparticleDetectorParameters |	Stores dimensions and configurable geometry parameters |
+| QuasiparticleResonatorAssembly | Constructs the repeated resonator or qubit structures |
+| QuasiparticlePrimaryGeneratorAction |	Configures the phonon or particle source |
+| QuasiparticleSteppingAction |	Records relevant phonon and quasiparticle steps |
+| QuasiparticleSensitivity |	Records energy deposition and detector-response information |
+| AnalysisTools/Xqp.py |	Calculates normalized quasiparticle populations |
+| plot_qp_creation_histogram.py	| Produces quasiparticle-creation histograms |
+| quasiparticle_analysis.C |	Provides ROOT-based analysis |
+| run_parallel.sh |	Divides a simulation across multiple workers |
+| run_parallel_phonon_types.sh |	Runs separate simulations for selected phonon polarizations |
+| run_process_chunks.sh |	Divides large simulations into independent processes |
 
 
