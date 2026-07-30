@@ -155,7 +155,7 @@ The figure below shows my recreation of Figure 3 from Yelton et al. It shows a h
 
 <table>
   <tr>
-    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_Cu.pngraw=true" width="400"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_Cu.png?raw=true" width="400"></td>
     <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png" width="400"></td>
   </tr>
 </table>
