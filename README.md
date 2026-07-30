@@ -189,3 +189,19 @@ The figure below is the simulated  $\(x_{\mathrm{qp}}\)$ for all 6 qubits on the
 </table>
 
 The figure below is the simulated  $\(x_{\mathrm{qp}}\)$ for all 6 qubits on the 1-um Cu device for a 150-us pulse.
+
+<table border="1">
+  <!-- Row 1 -->
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q1.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q3.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q5.png" width="300"></td>
+  </tr>
+  
+  <!-- Row 2 -->
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q2.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q4.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q6.png" width="300"></td>
+  </tr>
+</table>
