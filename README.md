@@ -149,5 +149,9 @@ The results below were generated using the run_process_chunks.sh script to perfo
 
 The non-Cu simulation completed in approximately 3 hours, while the Cu simulation completed in approximately 2.5 hours.
 
+## Comparison with Yelton Figure 3
+
+The figure below shows my recreation of Figure 3 from Yelton et al. It shows a histogram of quasiparticles creation time for the given qubit.
+
 
 
