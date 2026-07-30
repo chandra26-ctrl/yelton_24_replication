@@ -210,3 +210,11 @@ The figure below is the simulated  $\(x_{\mathrm{qp}}\)$ for all 6 qubits on the
     <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_e_Q6.png" width="300"></td>
   </tr>
 </table>
+
+### Comparison
+
+The recreated responses reproduce the qualitative trends reported in Figure 11 of Yelton *et al.* For both the non-Cu and 1-µm Cu devices, qubits located closer to the phonon injector exhibit larger peak \(x_{\mathrm{qp}}\) values, while qubits farther away experience progressively weaker responses. This spatial dependence demonstrates the attenuation of phonon-mediated quasiparticle poisoning as phonons propagate across the chip.
+
+The simulations also capture the expected effect of copper quasiparticle traps. Compared with the non-Cu device, the 1-µm Cu device exhibits significantly lower peak \(x_{\mathrm{qp}}\) values and faster decay across all six qubits, indicating more effective quasiparticle removal. These trends are consistent with the conclusions of Yelton *et al.*, showing that the addition of Cu traps substantially suppresses quasiparticle poisoning throughout the device.
+
+As with the previous comparisons, the results are intended to reproduce the qualitative behavior reported in the paper rather than provide an exact numerical match, since several geometry and material parameters were not specified and had to be approximated.
