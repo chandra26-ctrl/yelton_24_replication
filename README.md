@@ -166,6 +166,11 @@ The simulated quasiparticle creation times were used to calculate the normalized
 
 ![xqp](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/Xqp.png)
 
+### Comparison
+
+The recreated \(x_{\mathrm{qp}}\) responses capture the same qualitative behavior reported by Yelton *et al.* Following the phonon injection pulse, the quasiparticle density rises rapidly, reaches a peak, and then gradually decays as quasiparticles recombine and become trapped. The non-Cu device exhibits a significantly larger peak \(x_{\mathrm{qp}}\) and a slower decay than the Cu device, while the Cu device shows a much smaller response due to the presence of the copper quasiparticle traps. This trend is consistent with the results presented in Figure 11 of the paper, demonstrating that the simulation reproduces the expected effect of Cu traps in suppressing the quasiparticle population.
+
+Although the overall behavior agrees well with the published results, quantitative differences are expected because several simulation parameters, including aspects of the device geometry and material properties, were not specified in the paper and therefore had to be approximated.
 
 ## Comparison with Yelton Figure 11
 Figure 11 of Yelton et al. extends the single‑qubit analysis of Figure 3 to all six qubits on the device. Instead of showing only one junction’s quasiparticle response, the authors measure and simulate the full spatial pattern of phonon‑mediated quasiparticle poisoning across the entire chip. My replication follows the same procedure used for Figure 3, but applied independently to each qubit.
