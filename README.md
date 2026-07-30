@@ -77,7 +77,7 @@ This macro can be used to inspect the substrate, superconducting structures, res
     <td><img src="https://github.com/user-attachments/assets/efaf1471-a05c-4d31-809c-81aa059d7ff1" width="400"></td>
   </tr>
 </table>
-The geometry without Cu islands (left) clearly shows the aluminum patches as small red/blue features. With Cu islands present (right), these aluminum patches are largely obscured by the copper.
+The geometry without Cu islands (left) shows the aluminum patches as small red/blue features. With Cu islands present (right), these aluminum patches are largely obscured by the copper.
 
 
 To switch between configurations, toggle the variable `dp_usePaperCuIslands` in the QuasiparticleDetectorParameters header file (line 76): set it to `true` to include Cu islands, or `false` to exclude them.
@@ -100,4 +100,19 @@ Example:
 > ```
 > ./run_parallel.sh 16 500000 1 1000
 > ```
+
+This launches 16 workers and divides 500,000 primary particles between them.
+
+## Simulations by Phonon Polarization
+
+G4CMP represents three acoustic-phonon modes:
+- 'phononTS': transverse-slow phonons
+- 'phononTF': transverse-fast phonons
+- 'phononL': longitudinal phonons
+
+Run all three modes separately with:
+> ```
+>./run_parallel_phonon_types.sh [jobs_per_type] [phonons_per_type] [max_retries] [types]
+> ```
+
 
