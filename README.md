@@ -174,8 +174,8 @@ Figure 11 of Yelton et al. extends the single‑qubit analysis of Figure 3 to al
   <!-- Row 1 -->
   <tr>
     <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q1.png" width="300"></td>
-    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q2.png" width="300"></td>
     <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q3.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q5.png" width="300"></td>
   </tr>
   
   <!-- Row 2 -->
