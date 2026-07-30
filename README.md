@@ -225,19 +225,3 @@ This project is an independent reproduction of the methodology presented in the 
 
 > Yelton, W. G., McEwen, J. D., Goldie, D. J., et al. (2024). *Modeling phonon-mediated quasiparticle poisoning in superconducting qubit arrays*. **Physical Review B, 110**(2), 024519. https://doi.org/10.1103/PhysRevB.110.024519
 
-```bibtex
- @article{PhysRevB.110.024519,
-  title = {Modeling phonon-mediated quasiparticle poisoning in superconducting qubit arrays},
-  author = {Yelton, E. and Larson, C. P. and Iaia, V. and Dodge, K. and La Magna, G. and Baity, P. G. and Pechenezhskiy, I. V. and McDermott, R. and Kurinsky, N. A. and Catelani, G. and Plourde, B. L. T.},
-  journal = {Phys. Rev. B},
-  volume = {110},
-  issue = {2},
-  pages = {024519},
-  numpages = {17},
-  year = {2024},
-  month = {Jul},
-  publisher = {American Physical Society},
-  doi = {10.1103/PhysRevB.110.024519},
-  url = {https://link.aps.org/doi/10.1103/PhysRevB.110.024519}
-```
-
