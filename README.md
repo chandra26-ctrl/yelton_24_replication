@@ -23,14 +23,14 @@ As a result, this project is best understood as a reproduction of the paper’s 
 
 The modified simulation was developed to study:
 
--Phonon propagation through a silicon substrate
--Phonon interactions with superconducting aluminum structures
--Cooper-pair breaking caused by sufficiently energetic phonons
--Bogoliubov quasiparticle generation and transport
--Quasiparticle trapping within resonator and qubit structures
--The spatial distribution of quasiparticles across the device
--The relationship between phonon injection location and quasiparticle production
--Quasiparticle populations associated with individual qubits or resonators
+- Phonon propagation through a silicon substrate
+- Phonon interactions with superconducting aluminum structures
+- Cooper-pair breaking caused by sufficiently energetic phonons
+- Bogoliubov quasiparticle generation and transport
+- Quasiparticle trapping within resonator and qubit structures
+- The spatial distribution of quasiparticles across the device
+- The relationship between phonon injection location and quasiparticle production
+- Quasiparticle populations associated with individual qubits or resonators
 
 A major focus of the analysis is determining how many quasiparticles are produced in different regions of the device after a phonon event and comparing the resulting distributions with the trends presented in the Yelton paper.
 
