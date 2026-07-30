@@ -180,8 +180,8 @@ Figure 11 of Yelton et al. extends the single‑qubit analysis of Figure 3 to al
   
   <!-- Row 2 -->
   <tr>
-    <td>Row 2, Cell 1</td>
-    <td>Row 2, Cell 2</td>
-    <td>Row 2, Cell 3</td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q2.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q4.png" width="300"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q6.png" width="300"></td>
   </tr>
 </table>
