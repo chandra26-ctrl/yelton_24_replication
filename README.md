@@ -160,3 +160,5 @@ The figure below shows my recreation of Figure 3 from Yelton et al. It shows a h
   </tr>
 </table>
 
+The figure on the left shows the distribution of quasiparticles generated in the simulated Q4 junction patch for the non-Cu device, while the figure on the right shows the distribution of quasiparticles generated in the simulated Q3 junction patch for the Cu device.
+
