@@ -153,5 +153,10 @@ The non-Cu simulation completed in approximately 3 hours, while the Cu simulatio
 
 The figure below shows my recreation of Figure 3 from Yelton et al. It shows a histogram of quasiparticles creation time for the given qubit.
 
-
+<table>
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_Cu.pngraw=true" width="400"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png" width="400"></td>
+  </tr>
+</table>
 
