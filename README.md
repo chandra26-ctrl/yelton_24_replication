@@ -151,7 +151,7 @@ The non-Cu simulation completed in approximately 3 hours, while the Cu simulatio
 
 ## Comparison with Yelton Figure 3
 
-The figure below shows my recreation of Figure 3 from Yelton et al. It shows a histogram of quasiparticles creation time for the given qubit.
+The figures below shows my recreation of Figure 3 from Yelton et al. It shows a histogram of quasiparticles creation time for the given qubit.
 
 <table>
   <tr>
@@ -161,4 +161,8 @@ The figure below shows my recreation of Figure 3 from Yelton et al. It shows a h
 </table>
 
 The figure on the left shows the distribution of quasiparticles generated in the simulated Q4 junction patch for the non-Cu device, while the figure on the right shows the distribution of quasiparticles generated in the simulated Q3 junction patch for the Cu device.
+
+The simulated quasiparticle creation times were used to calculate the normalized quasiparticle density, \(x_{\mathrm{qp}}\). The quasiparticle counts were first normalized by the total number of simulated phonons, the Cooper-pair density, the aluminum patch volume, and the time-bin width to obtain the response per simulated phonon. This response was then convolved with the experimental phonon injection pulse to compute the generation rate, \(g(t)\). Finally, the time-dependent \(x_{\mathrm{qp}}\) was obtained by numerically solving the quasiparticle rate equation from Yelton *et al.*, accounting for both quasiparticle recombination and trapping. Generating the following figure:
+
+![xqp](https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/Xqp.png)
 
