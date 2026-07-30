@@ -143,5 +143,11 @@ The parallel simulation scripts combine the output from individual workers into 
 
 This file contains the combined Bogoliubov quasiparticle results from all completed simulation workers.
 
+# Comparison with Yelton Paper
+
+The results below were generated using the run_process_chunks.sh script to perform large-scale Monte Carlo simulations. The script divides the simulation into multiple independent processes and combines their outputs into a single CSV for analysis.
+
+The non-Cu simulation completed in approximately 3 hours, while the Cu simulation completed in approximately 2.5 hours.
+
 
 
