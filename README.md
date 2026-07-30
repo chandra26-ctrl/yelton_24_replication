@@ -106,13 +106,42 @@ This launches 16 workers and divides 500,000 primary particles between them.
 ## Simulations by Phonon Polarization
 
 G4CMP represents three acoustic-phonon modes:
-- 'phononTS': transverse-slow phonons
-- 'phononTF': transverse-fast phonons
-- 'phononL': longitudinal phonons
+- `phononTS`: transverse-slow phonons
+- `phononTF`: transverse-fast phonons
+- `phononL`: longitudinal phonons
 
 Run all three modes separately with:
 > ```
 >./run_parallel_phonon_types.sh [jobs_per_type] [phonons_per_type] [max_retries] [types]
 > ```
+
+Example:
+> ```
+> ./run_parallel_phonon_types.sh 16 500000 1 phononTS,phononTF,phononL
+> ```
+
+Separating the modes makes it possible to compare how each phonon polarization contributes to quasiparticle creation.
+
+## Chunked Large Runs
+For very large simulations, use:
+> ```
+>./run_process_chunks.sh [max_parallel] [total_primaries] [max_retries] [primaries_per_process]
+> ```
+
+Example:
+> ```
+> ./run_process_chunks.sh 8 5000000 2 50000
+> ```
+
+Each chunk launches a new simulator process. This reduces the memory growth that may occur during long Geant4 simulations.
+
+## Output file
+
+The parallel simulation scripts combine the output from individual workers into CSV files for analysis.
+
+``` combined_qp_results.csv ```
+
+This file contains the combined Bogoliubov quasiparticle results from all completed simulation workers.
+
 
 
