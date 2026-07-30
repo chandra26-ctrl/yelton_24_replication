@@ -170,3 +170,17 @@ The simulated quasiparticle creation times were used to calculate the normalized
 ## Comparison with Yelton Figure 11
 Figure 11 of Yelton et al. extends the single‑qubit analysis of Figure 3 to all six qubits on the device. Instead of showing only one junction’s quasiparticle response, the authors measure and simulate the full spatial pattern of phonon‑mediated quasiparticle poisoning across the entire chip. My replication follows the same procedure used for Figure 3, but applied independently to each qubit.
 
+<table border="0">
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig11_a_Q1.pngraw=true" width="450"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png?raw=true" width="450"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png?raw=true" width="450"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png?raw=true" width="450"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png?raw=true" width="450"></td>
+    <td><img src="https://github.com/chandra26-ctrl/yelton_24_replication/blob/main/images/fig_3_a_non_Cu.png?raw=true" width="450"></td>
+  </tr>
+</table>
